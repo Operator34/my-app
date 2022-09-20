@@ -22,12 +22,24 @@ const CountersList = () => {
         setCounters(initialState)
     }
 
-    const onIncrement = () => {
-       
+    const handleIncrement = (id) => {
+       setCounters(
+        counters.map((item) =>{
+            if (item.id ===id)
+            item.value=item.value+1
+            return item
+        })
+       )
     }
 
-    const onDecrement = () => {
-
+    const handleDecrement = (id) => {
+        setCounters(
+            counters.map((item) =>{
+                if (item.id ===id)
+                item.value=item.value-1
+                return item
+            })
+           )
     }
 
     return ( 
@@ -36,6 +48,8 @@ const CountersList = () => {
             <Counter 
             key={count.id} 
             onDelete={handleDelete} 
+            onIncrement={handleIncrement}
+            onDecrement={handleDecrement}
             id={count.id}
             value={count.value}
             name = {count.name}
@@ -47,6 +61,7 @@ const CountersList = () => {
             Сброс
         </button>
 
+        
 
     </>
     )

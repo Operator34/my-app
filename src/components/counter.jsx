@@ -13,29 +13,16 @@ const Counter = (props) => {
         classes += value === 0 ? "bg-warning" : "bg-primary"
         return classes
     }
-    const handleIncrement = () => {
-        //setValue((prevState) => prevState + 1) 
-        console.log('handleIncrement', props.id);
-        
-        
-    }
-    const handleDecrement = () => {
-        console.log('handleDecrement', props);
-        //setValue((prevState) => prevState - 1) 
-    }
     
     return ( 
         <div>
             <span>{props.name}</span>
             <React.Fragment>
                 <span className={getBageClasses()}>{formatValue()}</span>
-                <button className="btn btn-primary btn-sm m-2" onClick={handleIncrement}>
-                    +
-                </button>
                 <button className="btn btn-primary btn-sm m-2" 
-                onClick={handleDecrement}>
-                    -
-                </button>
+                onClick={() => {props.onIncrement(props.id)}}>+</button>
+                <button className="btn btn-primary btn-sm m-2" 
+                onClick={() => {props.onDecrement(props.id)}}>-</button>
                 <button className="btn btn-danger btn-sm m-2" 
                 onClick={()=>{props.onDelete(props.id)}}>Delete</button>
             </React.Fragment>
